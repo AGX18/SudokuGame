@@ -36,13 +36,13 @@
 
  bool SudokuBoard::loadBoard(std::string filename)
  {
-   
-     return false;
- }
+   // TODO: Implement this function
+   return false;
+}
 
- bool SudokuBoard::saveBoard(std::string filename)
- {
-
+bool SudokuBoard::saveBoard(std::string filename)
+{
+    // TODO: Implement this function
      return false;
  }
 
