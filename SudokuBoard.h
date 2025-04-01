@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <vector>
 
@@ -18,26 +19,27 @@
  * 
  */
 
-
-#include <vector>
  class SudokuBoard
  {
  private:
    std::vector<std::vector<int>> board;
    const int BOARD_SIZE = 9;
+   std::vector<std::pair<int, int>> lockedCells;
 
  public:
     SudokuBoard();
+    SudokuBoard(std::vector<std::vector<int>> board);
     ~SudokuBoard();
     void printBoard();
     bool isSolved();
-    bool isValid();
+    bool isValid(int row, int col);
     bool loadBoard(std::string filename);
     bool saveBoard(std::string filename);
     bool setCell(int row, int col, int value);
-    int getCell(int row, int col);
     bool isRowValid(int row);
     bool isColValid(int col);
     bool isBoxValid(int row, int col);
     bool isMoveValid(int row, int col, int value);
+    void reset();
+      bool solve();
  };

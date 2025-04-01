@@ -12,16 +12,14 @@ option(BUILD_ADVANCED "Build the SudokuAdvancedChecks module for advanced Sudoku
 # Core source files
 set(SOURCES
     SudokuBoard.cpp
-    SudokuSolver.cpp
     SudokuGame.cpp
     main.cpp
 )
 
 # Header files (not strictly required for add_executable, but good for clarity)
 set(HEADERS
-    SudokuBoard.hpp
-    SudokuSolver.hpp
-    SudokuGame.hpp
+    SudokuBoard.h
+    SudokuGame.h
 )
 
 # If building puzzle generator, include its source/header
