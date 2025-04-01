@@ -28,7 +28,6 @@
 
  public:
     SudokuBoard();
-    SudokuBoard(std::vector<std::vector<int>> board);
     ~SudokuBoard();
     void printBoard();
     bool isSolved();
@@ -41,5 +40,5 @@
     bool isBoxValid(int row, int col);
     bool isMoveValid(int row, int col, int value);
     void reset();
-      bool solve();
+    bool solve();
  };

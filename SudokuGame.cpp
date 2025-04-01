@@ -16,7 +16,8 @@ int SudokuGame::printMenu()
         "1) Enter a move\n"
         "2) Solve automatically\n"  <<
         "3) Load puzzle from file\n" << 
-        "4) Save current puzzle to file 5) Exit \n" <<
+        "4) Save current puzzle to file\n" <<
+        "5) Exit \n" <<
         "Choice: ";
         int choice;
         std::cin >> choice;
@@ -33,8 +34,13 @@ void SudokuGame::play()
 {
     board.printBoard();
     int choice = printMenu();
+
+    std::string fileName;
+
+
     switch (choice)
     {
+    
     case 1:
         std::cout << "Enter row (1-9), column (1-9), and value (1-9): 10 5 2" << std::endl;
         int row, col, value;
@@ -89,10 +95,16 @@ void SudokuGame::play()
         break;
     
     case 3:
+        std::cout << "Enter filename: ";
+        std::cin >> fileName;
+        board.loadBoard(fileName);
         std::cout << "Loading" << std::endl;
         break;
         
-    case 4:
+        case 4:
+        std::cout << "Enter filename: ";
+        std::cin >> fileName;
+        board.saveBoard(fileName);
         std::cout << "Saving" << std::endl;
         break;
     
@@ -102,6 +114,11 @@ void SudokuGame::play()
     default:
         break;
     }
+}
+
+void SudokuGame::loadBoardFromFile(std::string filename)
+{
+    board.loadBoard(filename);
 }
 
 void SudokuGame::reset()

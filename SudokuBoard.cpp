@@ -13,9 +13,6 @@
  {
  }
 
- SudokuBoard::SudokuBoard(std::vector<std::vector<int>> board) : board(board), lockedCells()
- {
- }
 
  SudokuBoard::~SudokuBoard()
  {
@@ -69,14 +66,56 @@
 
  bool SudokuBoard::loadBoard(std::string filename)
  {
-   // TODO: Implement this function
-   return false;
+    std::ifstream inFile(filename);
+    if (!inFile.is_open()) {
+        std::cerr << "Error: Could not open file." << std::endl;
+        return false;
+    }
+
+    for (int i = 0; i < BOARD_SIZE; i++)
+    {
+        for (int j = 0; j < BOARD_SIZE; j++)
+        {
+            char c;
+            inFile >> c;
+            if (c == '.')
+            {
+                board[i][j] = 0;
+            }
+            else
+            {
+                board[i][j] = c - '0';
+                lockedCells.push_back({i, j});
+            }
+        }
+    }
+
+    inFile.close();
+
+   return true;
 }
 
 bool SudokuBoard::saveBoard(std::string filename)
 {
-    // TODO: Implement this function
-     return false;
+    std::ofstream outFile(filename);
+    if (!outFile.is_open()) {
+        std::cerr << "Error: Could not open file." << std::endl;
+        return false;
+    }
+
+    for (const auto& row : board) {
+        for (int num : row) {
+            if (num == 0) {
+                outFile << ". ";
+            } else {
+                outFile << num << " ";
+            }
+        }
+        outFile << "\n";
+    }
+
+    outFile.close();
+     return true;
  }
 
  bool SudokuBoard::setCell(int row, int col, int value)
@@ -205,6 +244,7 @@ bool SudokuBoard::saveBoard(std::string filename)
      return true;
      
  }
+
 
  bool SudokuBoard::isRowValid(int row)
  {

@@ -17,6 +17,8 @@ public:
     void play();
     void reset();
     bool isSolved();
+    void loadBoardFromFile(std::string filename);
+    void saveBoard(std::string filename);
 private:   
     SudokuBoard board;
 };
