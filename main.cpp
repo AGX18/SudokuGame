@@ -3,7 +3,7 @@
 int main()
 {
     SudokuGame game;
-    while (!game.isSolved()) {
+    while (true) {
         game.play();
     }
     return 0;

@@ -186,7 +186,7 @@ bool SudokuBoard::saveBoard(std::string filename)
  void SudokuBoard::reset()
  {
     
-    // std::srand(static_cast<unsigned>(std::time(0)));
+    std::srand(static_cast<unsigned>(std::time(0)));
     for (int i = 0; i < BOARD_SIZE; i++)
       {
             for (int j = 0; j < BOARD_SIZE; j++)

@@ -61,22 +61,17 @@ void SudokuGame::play()
         
         if (!board.setCell(row - 1, col - 1, value))
         {
-            std::cout << "Invalid move. Please try again." << std::endl;
+            std::cout << "Invalid move. That cell might be occupied or the placement breaks Sudoku rules." << std::endl;
             play();
         } 
+        else
+        {
+            std::cout << "Move accepted!" << std::endl;
+        } 
+        
         if (isSolved())
         {
-            std::string answer;
-            std::cout << "Congratulations! You solved the puzzle." << std::endl;
-            std::cout << "wanna play again (y -> yes, n -> no): " << std::endl;
-            std::cin >> answer;
-            if (answer == "yes" || answer == "y")
-            {
-                reset();
-            } else {
-                exit(0);
-            }
-            
+            std::cout << "Great job! The Sudoku is solved!" << std::endl;
         }
         break;
     
@@ -84,9 +79,7 @@ void SudokuGame::play()
         board.solve();
         if (isSolved())
         {
-            std::cout << "Puzzle solved!" << std::endl;
-            board.printBoard();
-            exit(0);
+            std::cout << "Great job! The Sudoku is solved!" << std::endl;
         }
         else
         {
